@@ -1,0 +1,21 @@
+
+<div style="background-color:grey" align="center">
+<table>
+<%= form_with scope: :user, local: true do |form| %>
+    <p>
+        <%=form.label :Email%><br>
+        <%=form.text_field :Email%>
+    </p>
+    <p>
+        <%=form.label :Password%><br>
+        <%=form.text_field :Password%>
+    </p>
+    <p>
+        <%= form.submit%>
+    </p>
+    <p>
+        <%= link_to 'New User', new_user_path %>
+    </p>
+<%end%>
+</table>
+</div>
