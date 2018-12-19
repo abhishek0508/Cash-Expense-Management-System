@@ -1,5 +1,5 @@
 
-<div style="background-color:grey" align="center">
+<div class="container" style="background-color:grey" align="center">
 <table>
 <%= form_with scope: :user, local: true do |form| %>
     <p>
@@ -11,7 +11,7 @@
         <%=form.text_field :Password%>
     </p>
     <p>
-        <%= form.submit%>
+        <%= form.submit %>
     </p>
     <p>
         <%= link_to 'New User', new_user_path %>

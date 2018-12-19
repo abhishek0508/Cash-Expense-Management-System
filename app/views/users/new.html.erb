@@ -1,23 +1,27 @@
-<div style="background-color:grey" align="center">
+<html>
+<div class="container" style="background-color:grey" align="center">
 <%= form_with scope: :user, url: users_path(:id), local: true do |form| %>
+    <%= render 'shared/error_messages' %>
     <p>
         <%=form.label :Name%><br>
-        <%=form.text_field :name%>
+        <%=form.text_field :name, class:'form-control'%>
     </p>
     <p>
         <%=form.label :Email%><br>
-        <%=form.text_field :emailId%>
+        <%=form.text_field :emailId, class:'form-control'%>
     </p>
     <p>
-        <%=form.label :Password%><br>
-        <%=form.text_field :password%>
+        <%=form.label :password%><br>
+        <%=form.text_field :password, class:'form-control'%>
     </p>
     <p>
         <%=form.label :"Confirm Password"%><br>
-        <%=form.text_field :password_confirmation%>
+        <%=form.text_field :password_confirmation, class:'form-control'%>
     </p>
     <p>
-        <%= form.submit%><br>
+        <br>
+        <%= form.submit "Create new account", class:'form-control'%><br>
     </p>
 <%end%>
 </div>
+</html>

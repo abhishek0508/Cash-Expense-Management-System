@@ -1,6 +1,14 @@
-<p>
-    New User Created
-</p>
-<p>
-    <%= link_to 'Login Page', users_path%>
-</p>
+<!DOCTYPE html>
+  <body>
+    <div class="container" style="background-color:grey">
+    <p>
+        New User Created <br>
+        Name : <%= @user.name %><br>
+        Email_ID: <%= @user.emailId %><br>
+    </p>
+    <p>
+        <%= link_to 'Login Page', users_path%>
+    </p>
+    </div>
+  </body>
+</html>
