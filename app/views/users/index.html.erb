@@ -1,6 +1,6 @@
 
 <div class="container" style="background-color:grey" align="center">
-<table>
+<div class="row">
 <%= form_with scope: :user, local: true do |form| %>
     <p>
         <%=form.label :Email%><br>
@@ -11,11 +11,11 @@
         <%=form.text_field :Password%>
     </p>
     <p>
-        <%= form.submit %>
+        <%= form.submit "Log in", class: "btn btn-primary" %>
     </p>
     <p>
         <%= link_to 'New User', new_user_path %>
     </p>
 <%end%>
-</table>
+</div>
 </div>
