@@ -1,12 +1,17 @@
 <!DOCTYPE html>
   <body>
-  <div class = "row">
-    <div class="container" style="background-color:grey">
-    <p align="right">
-        Name : <%= @user.name %><br>
-        Email_ID: <%= @user.emailId %><br>
-        <%=link_to "Log out", logout_path, method: :delete%>
-        </p>
+  <br>
+  <br>
+    <div class="container">
+    <div class = "row">
+    <table width="600" align="center" >
+      <tr>
+        <td align="right">Name : <%= current_user.name%></td>
+      </tr>
+      <tr>
+        <td align="right"><%=link_to "Log out", logout_path, method: :delete%></td>
+      </tr>
+        </table>
     </div>
   </div>
   </body>
