@@ -1,8 +1,12 @@
 <html>
-<div class="container" style="background-color:grey" align="center">
+<div class = "container">
+<div class = "row">
+<div class="col-md-6 col-md-offset-3">
 <%= form_with scope: :user, url: users_path(:id), local: true do |form| %>
     <%= render 'shared/error_messages' %>
+    <Strong >Create your Account</Strong>
     <p>
+        <br>
         <%=form.label :Name%><br>
         <%=form.text_field :name, class:'form-control'%>
     </p>
@@ -19,9 +23,10 @@
         <%=form.text_field :password_confirmation, class:'form-control'%>
     </p>
     <p>
-        <br>
-        <%= form.submit "Create new account", class: "btn btn-primary" %><br>
+        <%= form.submit "Create new account", class: "btn btn-primary" %>
     </p>
 <%end%>
+</div>
+</div>
 </div>
 </html>

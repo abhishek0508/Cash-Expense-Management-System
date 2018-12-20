@@ -1,14 +1,13 @@
 <!DOCTYPE html>
   <body>
+  <div class = "row">
     <div class="container" style="background-color:grey">
-    <p>
-        New User Created <br>
+    <p align="right">
         Name : <%= @user.name %><br>
         Email_ID: <%= @user.emailId %><br>
-    </p>
-    <p>
-        <%= link_to 'Login Page', users_path%>
-    </p>
+        <%=link_to "Log out", logout_path, method: :delete%>
+        </p>
     </div>
+  </div>
   </body>
 </html>
