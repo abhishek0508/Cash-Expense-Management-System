@@ -3,12 +3,14 @@ class AccountsController < ApplicationController
     def index
     end
     def new
-        @account = current_user.new
+        @account = Account.new
     end
     def create
-        @account = current_user.accounts.new(account_paramas)
+        @user = User.find(params[:user_id])
+        @account = @user.accounts.create(account_paramas)
 
         if @account.save
+            
         else
             render 'new'
         end
