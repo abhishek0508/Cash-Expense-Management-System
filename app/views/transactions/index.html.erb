@@ -1,0 +1,30 @@
+<html>
+<title>
+</title>
+<head>  
+<Strong>Create Transaction</Strong>
+</head>
+<body>
+<% @transactions.each do |trans| %>
+    <div class = "row">
+          <div class = "col"><%= trans.amount %></div>
+          <div class = "col"><%= trans.description %></div>
+          <div class = "col"><%= trans.image%></div>
+    </div>            
+<% end %>
+<%= form_for(:transaction, url: user_account_transactions_path(@current_user,@accounts), method: :POST) do |f| )%>
+    <div class="row">
+        <div class = "col">Enter Amount</div>
+    </div>
+    <div class="row">
+        <div class = "col"><%= f.text_field :amount></div>
+    </div>
+    <div class="row">
+        <div class = "col">Enter Description</div>
+    </div>
+    <div class="row">
+        <div class = "col"><%= f.text_field :description></div>
+    </div>
+<%end%>
+</body> 
+</html>

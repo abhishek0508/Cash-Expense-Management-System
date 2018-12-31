@@ -9,8 +9,9 @@
       </div>
 
       <%= form_for(:account, url:user_accounts_path(@current_user), method: :POST) do |f| %>
+            
       <div class="row">
-            <div class = "col-sm-5"><p align="left"><p>Enter Account Name:</p></div>
+            <div class = "col-sm-5"><p align="left"><p>Enter account name to create new account:</p></div>
       </div>
       <div class="row">
             <div class = "col-sm-5"><p align="left"><%=f.text_field :name, class:'form-control' %></div>    
@@ -19,6 +20,16 @@
             <div class = "col-sm-5"><p align="left"><%=f.submit "Create", class:"btn btn-primary"%></div>    
       </div>
       <% end %>
-  </div>
-  </body>
+      <div class = "row">
+            <div class = "col-sm-10"><Strong><p align="left">Account Names List</p></Strong></div>
+      </div>
+      <% @accounts.each do |acc| %>
+            <div class = "row">
+                  <div class = "col"><%= acc.name %></div>
+                  <div class = "col"><%= link_to "Edit" %></div>
+                  <div class = "col"><%= link_to "Transactions" , user_account_transactions_path(@current_user,@accounts)%></div>
+            </div>            
+      <% end %>
+</div>
+  </body
 </html>

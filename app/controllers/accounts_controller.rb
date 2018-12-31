@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
     include SessionsHelper
-    def index
+    def index 
+
     end
     def new
         @account = Account.new
@@ -10,13 +11,14 @@ class AccountsController < ApplicationController
         @account = @user.accounts.create(account_paramas)
 
         if @account.save
-            
+            redirect_to @user
         else
             render 'new'
         end
     end
     def show
         @account = current_user.accounts.find(params[:name])
+        
     end
     private
     def account_paramas
