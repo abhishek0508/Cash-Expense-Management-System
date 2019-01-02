@@ -14,9 +14,8 @@ class UsersController < ApplicationController
         end
     end
     def show
-        @user = User.find(params[:id])
         @accounts = current_user.accounts.all
-        @account = Account.new
+       
     end
     private 
     def user_params
