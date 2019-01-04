@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     def index
+        @users = User.all
     end
     def new
         @user = User.new
@@ -14,8 +15,8 @@ class UsersController < ApplicationController
         end
     end
     def show
-        @accounts = current_user.accounts.all
-       
+        @accounts =current_user.accounts.all
+        @account = current_user.accounts.find(params[:id])
     end
     private 
     def user_params

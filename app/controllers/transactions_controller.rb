@@ -6,11 +6,12 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.new
     end
     def create
+        @user = current_user
         @account = Account.find(params[:account_id])
         @transaction = @account.transactions.create(transaction_params)
         
         if @transaction.save
-            
+            redirect_to user_account_transactions_path
         else
             render 'new'
         end

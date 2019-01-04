@@ -1,0 +1,18 @@
+<html>
+<body>
+<h1 align="center"><Strong>Edit Account Name</Strong></h1>
+<div class = "container">
+<%= form_for(:account, url:user_account_path, method: :PATCH) do |f| %>
+<div class = "row">
+    <div class = "col"><Strong>Enter new account Name:</Strong></div>
+</div>
+<div class="row">
+    <div class = "col-sm-5"><Strong><p><%=f.text_field :name, class:'form-control' %></p></Strong></div>
+</div>
+<div class="row">
+    <div class="col"><%= f.submit "Update", class:'btn btn-primary'%></div>
+</div>
+<% end %>
+</div>
+</body>
+</html>
