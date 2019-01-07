@@ -17,16 +17,34 @@
 </h1><br>
 <div class="container">
 <div class="row">
-    <div class ="col"><Strong>Amount</Strong></div>
-    <div class ="col"><Strong>Description</Strong></div>
-    <div class ="col"><Strong>Document Link</Strong></div>
+    <div class ="col-sm-1"><Strong>Amount</Strong></div>
+    <div class ="col-sm-3"><Strong>Description</Strong></div>
+    <div class ="col-sm-2"><Strong>Document Link</Strong></div>
+    <div class ="col-sm-3"><Strong>Update_link</Strong></div>
+    <% if current_user.admin %>
+        <div class ="col-sm-3"><Strong>Document Approve(Click to Approve)</Strong></div>   
+    <% else %>
+        <div class ="col-sm-2"><Strong>Approval Status</Strong></div>   
+    <% end %>
+    
 </div>
 <br>
-<% @transactions.each do |trans| %>
+<% @transact.each do |trans| %>
     <div class = "row">
-          <div class = "col"><%= trans.amount %></div>
-          <div class = "col"><%= trans.description %></div>
-          <div class = "col"><%= link_to "transaction_document" , trans.image.url %></div>
+          <div class = "col-sm-1"><%= trans.amount %></div>
+          <div class = "col-sm-3"><%= trans.description %></div>
+          <div class = "col-sm-2"><%= link_to "transaction_document" , trans.image.url %></div>
+          <div class = "col-sm-3"><%= link_to "delete_image/update_image", edit_user_account_transaction_path(@current_user,@account,trans)%></div>
+          <% if current_user.admin %>
+                <div class = "col-sm-3"><%= link_to "Approve", :controller => :transaction, :action => :approve %></div>
+          <% else %>
+                <% if trans.approve %>
+                    <div class = "col-sm-3"><Strong>Approved</Strong></div>
+                <% else %>
+                    <div class = "col-sm-3"><Strong>Not Approved</Strong></div>
+                <% end %>
+          <% end %>
+          <div class = "row"><p><br></p></div>
     </div>            
 <% end %>
 </div>

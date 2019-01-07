@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_121300) do
+ActiveRecord::Schema.define(version: 2019_01_07_101009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_121300) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "account_id"
+    t.boolean "approve"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_121300) do
     t.string "password_digest"
     t.string "password_confirmation"
     t.string "remember_digest"
+    t.boolean "admin"
     t.index ["emailId"], name: "index_users_on_emailId", unique: true
   end
 

@@ -15,12 +15,17 @@ class UsersController < ApplicationController
         end
     end
     def show
-        @accounts =current_user.accounts.all
-        @account = current_user.accounts.find(params[:id])
+        @var = current_user.admin
+        if @var
+            @accounts = Account.all
+        else
+            @accounts =current_user.accounts.all
+        end
+        @account = current_user
     end
     private 
     def user_params
-       params.require(:user).permit(:name,:emailId,:password,:password_confirmation) 
+       params.require(:user).permit(:name,:emailId,:password,:password_confirmation,:admin) 
     end
 
     

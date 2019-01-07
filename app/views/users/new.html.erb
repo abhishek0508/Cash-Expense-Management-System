@@ -23,6 +23,9 @@
         <%=form.password_field :password_confirmation, class:'form-control'%>
     </p>
     <p>
+        <%= form.radio_button :admin, class:'form-control'%>  Is Admin?
+    </p>
+    <p>
         <%= form.submit "Create new account", class: "btn btn-primary" %>
     </p>
 <%end%>
