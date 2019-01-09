@@ -36,7 +36,7 @@
           <div class = "col-sm-2"><%= link_to "transaction_document" , trans.image.url %></div>
           <div class = "col-sm-3"><%= link_to "delete_image/update_image", edit_user_account_transaction_path(@current_user,@account,trans)%></div>
           <% if current_user.admin %>
-                <div class = "col-sm-3"><%= link_to "Approve", :controller => :transaction, :action => :approve %></div>
+                <div class = "col-sm-3"><%= link_to "Approve", approve_path(:transaction_id => trans.id), method: :POST%></div>
           <% else %>
                 <% if trans.approve %>
                     <div class = "col-sm-3"><Strong>Approved</Strong></div>

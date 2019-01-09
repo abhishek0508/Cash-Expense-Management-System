@@ -14,7 +14,6 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.new
     end
     def create
-
         @user = current_user
         @account = Account.find(params[:account_id])
         @transaction = @account.transactions.create(transaction_params)
@@ -35,7 +34,9 @@ class TransactionsController < ApplicationController
     end
 
     def approve
-        
+       @transaction = Transaction.find(params[:transaction_id])
+       @transaction.approve = true
+       @transaction.save    
     end
 
     def transaction_params
