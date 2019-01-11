@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         if @var
             @accounts = Account.all
         else
-            @accounts =current_user.accounts.all
+            @accounts = current_user.accounts.all
         end
         @account = current_user
     end

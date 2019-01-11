@@ -4,11 +4,7 @@ class TransactionsController < ApplicationController
         @account = Account.find(params[:account_id])
         @user = current_user
         @admin = current_user.admin
-        if @admin
-            @transact = Transaction.all
-        else
-            @transact = @account.transactions
-        end
+        @transact = @account.transactions
     end
     def new
         @transaction = Transaction.new
@@ -36,7 +32,7 @@ class TransactionsController < ApplicationController
     def approve
        @transaction = Transaction.find(params[:transaction_id])
        @transaction.approve = true
-       @transaction.save    
+       @transaction.save
     end
 
     def transaction_params
