@@ -21,10 +21,15 @@ class TransactionsController < ApplicationController
         end
     end
     def edit
-       
     end
     def update
         @user = current_user
+        @transaction = Transaction.find(params[:id])
+        if @transaction.update_attributes(transaction_params)
+            redirect_to user_account_transactions_path
+        else
+            render 'edit'
+        end
     end
     def show
     end

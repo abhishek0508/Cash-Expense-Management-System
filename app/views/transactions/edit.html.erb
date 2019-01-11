@@ -2,17 +2,29 @@
 <body>
 <h1 align="center"><Strong>Update File</Strong></h1>
 <div class = "container">
-<%= form_for(:account, url:user_account_transaction_path, method: :PATCH) do |f| %>
-<div class="row">
-    <div class = "col-sm-5">Upload Attachment</div>
-</div>
-<div class="row">
-    <div class = "col-sm-5"><p><%= f.file_field :image, class:'form-control'%></p></div>
-</div>
-<div class="row">
-    <div class="col"><%= f.submit "Update", class:'btn btn-primary'%></div>
-</div>
-<% end %>
+<%= form_for(:transaction, url: user_account_transaction_path([@current_user, @account, @transaction]), method: :PATCH) do |f| %>
+    <div class="row">
+        <div class = "col-sm-5">Enter Amount</div>
+    </div>
+    <div class="row">
+        <div class = "col-sm-5"><p><%=f.text_field :amount, class:'form-control' %></p></div>
+    </div>
+    <div class="row">
+        <div class = "col-sm-5">Enter Description</div>
+    </div>
+    <div class="row">
+        <div class = "col-sm-5"><p><%= f.text_field :description, class:'form-control' %></p></div>
+    </div>
+    <div class="row">
+        <div class = "col-sm-5">Upload Attachment</div>
+    </div>
+    <div class="row">
+        <div class = "col-sm-5"><p><%= f.file_field :image, class:'form-control'%></p></div>
+    </div>
+    <div class="row">
+        <div class = "col-sm-5"><p align="left"><%=f.submit "Update", class:"btn btn-primary"%></div>    
+    </div>
+    <% end %>
 </div>
 </body>
 </html>
