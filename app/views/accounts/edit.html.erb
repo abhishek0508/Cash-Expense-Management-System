@@ -4,15 +4,24 @@
 <div class = "container">
 <%= form_for(:account, url:user_account_path, method: :PATCH) do |f| %>
 <div class = "row">
-    <div class = "col"><Strong>Enter new account Name:</Strong></div>
+    <div class = "col"><Strong>Current Account Name is:  </Strong><%= @account.name %></div>
+</div>
+<br>
+    <div class = "row">
+    <div class = "col"><Strong>Enter New account Name or Click on delete:</Strong></div>
 </div>
 <div class="row">
-    <div class = "col-sm-5"><Strong><p><%=f.text_field :name, class:'form-control' %></p></Strong></div>
+    <div class = "col-sm-5"><Strong><p><%=f.text_field :account_name, class:'form-control' %></p></Strong></div>
 </div>
 <div class="row">
-    <div class="col"><%= f.submit "Update", class:'btn btn-primary'%></div>
+    <div class="col-sm-1"><%= f.submit "Update", class:'btn btn-primary'%></div>
+    <div class="col"><%= f.submit "Delete", class:'btn btn-primary'%></div>
 </div>
+<br>
 <% end %>
+<div class="row">
+    <div class = "col-sm-5"><Strong><p><%= link_to "Back", user_account_path %></p></Strong></div>
+</div>
 </div>
 </body>
 </html>

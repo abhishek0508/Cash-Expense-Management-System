@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
         
     end
     def edit
-        
+        @account = Account.find(params[:id])
     end
     def update
         @user = current_user
@@ -34,7 +34,7 @@ class AccountsController < ApplicationController
     end
     private
     def account_params
-        params.require(:account).permit(:name)
+        params.require(:account).permit(:account_name)
     end
     
 end
