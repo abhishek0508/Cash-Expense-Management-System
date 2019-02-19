@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
     include SessionsHelper
-    def index 
+    def index
         @accounts = Account.new
     end
     def new
@@ -34,7 +34,7 @@ class AccountsController < ApplicationController
     end
     private
     def account_params
-        params.require(:account).permit(:account_name)
+        params.require(:account).permit(:name)
     end
     
 end

@@ -23,12 +23,18 @@
       <div class = "row">
             <div class = "col-sm-10"><Strong><p align="left">Account Names List</p></Strong></div>
       </div>
+      <% if @accounts.empty? %>
+            <div class = "row">
+                  <div class = "col">No Acounts Now</div>
+            </div>
+      <% else %>
       <% @accounts.each do |account| %>
             <div class = "row">
                   <div class = "col"><%= account.name %></div>
                   <div class = "col"><%= link_to "Edit", edit_user_account_path(@current_user, account)%></div>
                   <div class = "col"><%= link_to "Transactions" , user_account_transactions_path(@current_user, account)%></div>
-            </div>            
+            </div> 
+      <% end %>
       <% end %>
 </div>
   </body
