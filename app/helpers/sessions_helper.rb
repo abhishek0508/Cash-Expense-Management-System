@@ -17,4 +17,15 @@ module SessionsHelper
         session.delete(:user_id)
         @current_user = nil
     end
+
+    def authenticate_user
+        redirect_to new_session_path unless current_user
+    end
+
+    def already_login
+        if !logged_in?
+            redirect_to login_path
+        end
+    end
+
 end

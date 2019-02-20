@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :already_login, :except => [:new, :create]
     def index
         @users = User.all
     end
@@ -9,19 +10,12 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             log_in @user
-            redirect_to @user
+            redirect_to user_accounts_path(@user)
         else
             render 'new'
         end
     end
     def show
-        @var = current_user.admin
-        if @var
-            @accounts = Account.all
-        else
-            @accounts = current_user.accounts.all
-        end
-        @account = current_user
     end
     private 
     def user_params

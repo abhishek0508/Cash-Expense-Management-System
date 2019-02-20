@@ -1,14 +1,39 @@
-<html>
-<title>
-</title>
-<head>
-</head>
-<body>
-This is cool
-
-tgtjgngjfnjfnjnjn
-sdhbhbfdhbfdhfbdhfbdhfbd
-dfhdfbdhfbdhfbdf
-
-</body>
+<!DOCTYPE html>
+  <body>
+  <div class = "container">
+      <h1 align="center"><Strong>Transaction System</Strong></h1>
+      <div class = "row">
+            <div class = "col-sm-10"><p align="right">Name : <%= current_user.name%></p></div>
+            <div class = "col-sm-2"><%=link_to "Log out", logout_path, method: :delete%></p></div>
+      </div>
+      <%= form_for(:account, url:user_accounts_path([@current_user]), method: :POST) do |f| %>
+            <%= render 'shared/error_messages_account' %>
+      <div class="row">
+            <div class = "col-sm-5"><p align="left"><p><Strong>Enter account name to create new account:</Strong></p></div>
+      </div>
+      <div class="row">
+            <div class = "col-sm-5"><p align="left"><%=f.text_field :accname, class:'form-control' %></p></div>    
+      </div>
+      <div class="row">
+            <div class = "col-sm-5"><p align="left"><%= f.submit "Create", class:"btn btn-primary"%></div>    
+      </div>
+      <% end %>
+      <div class = "row">
+            <div class = "col-sm-10"><Strong><p align="left">Account Names List</p></Strong></div>
+      </div>
+      <% if @accounts.empty? %>
+            <div class = "row">
+                  <div class = "col">No Acounts Now</div>
+            </div>
+      <% else %>
+      <% @accounts.each do |account| %>
+            <div class = "row">
+                  <div class = "col"><%= account.accname %></div>
+                  <div class = "col"><%= link_to "Edit", edit_user_account_path(@current_user, account)%></div>
+                  <div class = "col"><%= link_to "Transactions" , user_account_transactions_path(@current_user, account)%></div>
+            </div> 
+      <% end %>
+      <% end %>
+</div>
+  </body
 </html>

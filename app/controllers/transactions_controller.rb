@@ -21,6 +21,7 @@ class TransactionsController < ApplicationController
         end
     end
     def edit
+        @transaction = Transaction.find(params[:id])
     end
     def update
         @user = current_user
