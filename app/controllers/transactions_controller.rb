@@ -3,11 +3,10 @@
 
 class TransactionsController < ApplicationController
 
-  before_action :authenticate_user
+  before_action :authenticate_user, except: :approve
   def index
     @transactions = Transaction.all
     @account = Account.find(params[:account_id])
-    @user = current_user
     @admin = current_user.admin
     @transact = @account.transactions
   end
@@ -31,9 +30,10 @@ class TransactionsController < ApplicationController
   end
   
   def update
-    @user = current_user
-    @transaction = Transaction.find(params[:id])
+    @account = Account.find(params[:account_id])
+    @transaction = @account.transactions.find(params[:id])
     if @transaction.update_attributes(transaction_params)
+      flash[:success] = "Document Updated"
       redirect_to user_account_transactions_path
     else
       render 'edit'
@@ -45,9 +45,17 @@ class TransactionsController < ApplicationController
   end
 
   def approve
+    @account = Account.find(params[:account_id])
     @transaction = Transaction.find(params[:transaction_id])
-    @transaction.approve = true
+    if params[:approved] == 'yes'
+      @transaction.approve = true
+      flash[:success] = "Transaction Approved"
+    else
+      @transaction.approve = false
+      flash[:success] = "Transaction Disapproved"
+    end
     @transaction.save
+    redirect_to user_account_transactions_path(current_user, @account)
   end
 
   def transaction_params

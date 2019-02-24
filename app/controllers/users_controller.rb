@@ -2,7 +2,7 @@
 # Users class for creating new users
 
 class UsersController < ApplicationController
-  # before_action :already_login
+  before_action :already_login
   def index
     @users = User.all
   end

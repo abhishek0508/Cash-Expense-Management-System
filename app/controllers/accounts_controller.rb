@@ -17,37 +17,37 @@ class AccountsController < ApplicationController
   end
     
   def create
-    @user = current_user
     @account = current_user.accounts.create(account_params)
     if @account.save
       # do nothing 
     else
       flash[:notice] = 'Account Name Error'
     end
-    redirect_to @user
+    redirect_to current_user
   end
 
   def show
-    @account = current_user.accounts.find(params[:name])
+    @account = current_user.accounts.find(params[:user_id])
   end
 
   def edit
-    @account = Account.find(params[:id])
+    @account = current_user.accounts.find(params[:id])
   end
 
   def update
-    @account = Account.find(params[:id])
+    @account = current_user.accounts.find(params[:id])
     if @account.update(account_params)
-      redirect_to user_accounts_path(@user)
+      redirect_to user_accounts_path(current_user)
+      flash[:success] = "Document Updated"
     else
       render 'edit'
     end
   end
  
   def destroy
-    @account = Account.find(params[:id])
+    @account = current_user.accounts.find(params[:id])
     if @account.destroy
-      redirect_to user_accounts_path(@user)
+      redirect_to user_accounts_path(current_user)
       flash[:success] = 'Document has been deleted'
     else
       flash[:notice]  = 'Document cannot be deleted'

@@ -2,7 +2,7 @@
 <body>
 <h1 align="center"><Strong>Update File</Strong></h1>
 <div class = "container">
-<%= form_for(:transaction, url: user_account_transaction_path([@current_user, @account, @transaction]), method: :PATCH) do |f| %>
+<%= form_for(:transaction, url: user_account_transaction_path, method: :PATCH) do |f| %>
     <div class="row">
         <div class = "col-sm-5">Enter Amount</div>
     </div>
