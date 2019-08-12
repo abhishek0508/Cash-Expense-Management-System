@@ -1,24 +1,8 @@
-# README
+# Cash-Expense-Management-System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is the project which i made to learn the different concepts of Ruby on Rails.
+Here you can create an Account. 
+Add Transactions that you have done, and get it approved by admin.
+Create, Update and delete transaction.
+Admin can see all transaction.
+User Login & Logout feature.
